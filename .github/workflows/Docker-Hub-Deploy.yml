@@ -16,12 +16,12 @@ jobs:
 
     # Login to Docker Hub
     - name: Log in to Docker Hub
-      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+      run: echo "Venky@460" | docker login -u "VenkateshPulibandla" --password-stdin
 
     # Build Docker image
     - name: Build Docker Image
-      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/ecommerce:latest .
+      run: docker build -t VenkateshPulibandla/ecommerce:latest .
 
     # Push Docker image to Docker Hub
     - name: Push Docker Image
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/ecommerce:latest
+      run: docker push VenkateshPulibandla/ecommerce:latest
