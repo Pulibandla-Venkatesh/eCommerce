@@ -11,6 +11,12 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
+
+# Install .NET Framework Developer Pack (Needed for .NET 4.7.2)
+RUN apt-get update && apt-get install -y wget \
+    && wget -q https://download.visualstudio.microsoft.com/download/pr/3d6b37dc-c598-4cd2-b4ab-924aeaf5e741/1c033e2298a0d5704b5c6e46e3a3a4c1/dotnet-hosting-4.7.2.tar.gz \
+    && tar -xvf dotnet-hosting-4.7.2.tar.gz -C /usr/share/dotnet/
+
 COPY ["eCommerce/eCommerce.csproj", "eCommerce/"]
 COPY ["eCommerceDataLayer/eCommerceDataLayer.csproj", "eCommerceDataLayer/"]
 RUN dotnet restore "./eCommerce/eCommerce.csproj"
