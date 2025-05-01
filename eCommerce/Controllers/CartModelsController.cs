@@ -87,7 +87,7 @@ namespace eCommerce.Controllers
         // POST: api/CartModels
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [Authorize]
+       
         public async Task<ActionResult<CartModel>> PostCartModel(CartModel cartModel)
         {
           if (_context.CartModel == null)
